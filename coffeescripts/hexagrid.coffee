@@ -17,12 +17,10 @@ class Cell
   drawCell: ->
     @cell = @r.path @path()
     @cell.attr 
-      "scale": 1
       "fill": @colors['dim']
       "stroke-width": 2
       "stroke": "#5f6664"
-    @cell.transform "t#{@x},#{@y}"
-    @cell.scale 1
+    @cell.transform "t#{@x},#{@y}s1"
   changeColor: (c) ->
     @cell.attr "fill": @colors[c]
   doClick: =>

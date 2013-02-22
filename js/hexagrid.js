@@ -36,13 +36,11 @@
     Cell.prototype.drawCell = function() {
       this.cell = this.r.path(this.path());
       this.cell.attr({
-        "scale": 1,
         "fill": this.colors['dim'],
         "stroke-width": 2,
         "stroke": "#5f6664"
       });
-      this.cell.transform("t" + this.x + "," + this.y);
-      return this.cell.scale(1);
+      return this.cell.transform("t" + this.x + "," + this.y + "s1");
     };
 
     Cell.prototype.changeColor = function(c) {

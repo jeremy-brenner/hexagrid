@@ -21,7 +21,7 @@ class Cell
       "fill": @colors['dim']
       "stroke-width": 2
       "stroke": "#5f6664"
-    @cell.translate @x, @y
+    @cell.transform "t#{@x},#{@y}"
     @cell.scale 1
   changeColor: (c) ->
     @cell.attr "fill": @colors[c]
@@ -30,8 +30,10 @@ class Cell
     @hovered()
   hovered: =>
     if @clicked then @changeColor 'bright-blue' else @changeColor 'bright'
+    @cell.animate transform: "t#{@x},#{@y}s1.2", 1000, 'bounce'
   unhovered: =>
     if @clicked then @changeColor 'blue' else @changeColor 'dim'
+    @cell.animate transform: "t#{@x},#{@y}s1", 1000, 'bounce'
   attachHandlers: ->
     @cell.hover @hovered, @unhovered
     @cell.click @doClick

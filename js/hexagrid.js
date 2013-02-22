@@ -41,7 +41,7 @@
         "stroke-width": 2,
         "stroke": "#5f6664"
       });
-      this.cell.translate(this.x, this.y);
+      this.cell.transform("t" + this.x + "," + this.y);
       return this.cell.scale(1);
     };
 
@@ -58,18 +58,24 @@
 
     Cell.prototype.hovered = function() {
       if (this.clicked) {
-        return this.changeColor('bright-blue');
+        this.changeColor('bright-blue');
       } else {
-        return this.changeColor('bright');
+        this.changeColor('bright');
       }
+      return this.cell.animate({
+        transform: "t" + this.x + "," + this.y + "s1.2"
+      }, 1000, 'bounce');
     };
 
     Cell.prototype.unhovered = function() {
       if (this.clicked) {
-        return this.changeColor('blue');
+        this.changeColor('blue');
       } else {
-        return this.changeColor('dim');
+        this.changeColor('dim');
       }
+      return this.cell.animate({
+        transform: "t" + this.x + "," + this.y + "s1"
+      }, 1000, 'bounce');
     };
 
     Cell.prototype.attachHandlers = function() {

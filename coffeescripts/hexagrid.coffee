@@ -27,6 +27,7 @@ class Cell
     @clicked = not @clicked
     @hovered()
   hovered: =>
+    @cell.toFront()
     if @clicked then @changeColor 'bright-blue' else @changeColor 'bright'
     @cell.animate transform: "t#{@x},#{@y}s1.2", 1000, 'bounce'
   unhovered: =>
@@ -62,4 +63,4 @@ class Grid
 jQuery ->
   @Hexagrid = window.Hexagrid ? {}
   @Hexagrid.grid = new @Hexagrid.Grid 'hexagrid', $(window).width(), $(window).height()
-  
+  $(window).resize @Hexagrid.grid.reDraw()

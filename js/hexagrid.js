@@ -55,6 +55,7 @@
     };
 
     Cell.prototype.hovered = function() {
+      this.cell.toFront();
       if (this.clicked) {
         this.changeColor('bright-blue');
       } else {
@@ -141,7 +142,8 @@
   jQuery(function() {
     var _ref1;
     this.Hexagrid = (_ref1 = window.Hexagrid) != null ? _ref1 : {};
-    return this.Hexagrid.grid = new this.Hexagrid.Grid('hexagrid', $(window).width(), $(window).height());
+    this.Hexagrid.grid = new this.Hexagrid.Grid('hexagrid', $(window).width(), $(window).height());
+    return $(window).resize(this.Hexagrid.grid.reDraw());
   });
 
 }).call(this);

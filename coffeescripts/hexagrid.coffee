@@ -1,4 +1,3 @@
-
 class Cell
   constructor: (r,coords) ->
     [ @r, @x, @y ] = [ r, coords.x, coords.y ]
@@ -63,4 +62,4 @@ class Grid
 jQuery ->
   @Hexagrid = window.Hexagrid ? {}
   @Hexagrid.grid = new @Hexagrid.Grid 'hexagrid', $(window).width(), $(window).height()
-  $(window).resize @Hexagrid.grid.reDraw()
+ # $(window).resize @Hexagrid.grid.reDraw()
